@@ -8,3 +8,4 @@ scikit-learn
 tqdm
 kagglehub
 Streamlit
+altair==4.2.2
