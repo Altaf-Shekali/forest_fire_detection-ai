@@ -10,3 +10,4 @@ kagglehub
 Streamlit
 altair==4.2.2
 opencv-python-headless
+python-dotenv
