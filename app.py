@@ -63,7 +63,7 @@ with st.sidebar:
 # ---------------- HEADER ----------------
 st.markdown(
     """
-    <h1 style='text-align:center;'>🌲 Forest Fire Detection & Alert System</h1>
+    <h1 style='text-align:center;'> Forest Fire Detection & Alert System</h1>
     <p style='text-align:center; font-size:18px;'>
     AI-powered real-time forest fire detection using Deep Learning & Computer Vision
     </p>
@@ -148,9 +148,9 @@ if mode == "Image Detection":
             label, conf, probs = predict_pil_image(image)
 
             if label == "Fire":
-                st.error("🔥 FIRE DETECTED")
+                st.error("FIRE DETECTED")
             else:
-                st.success("✅ NO FIRE DETECTED")
+                st.success(" NO FIRE DETECTED")
 
             st.metric("Confidence", f"{conf:.2%}")
             st.progress(conf)
@@ -161,7 +161,7 @@ if mode == "Image Detection":
 
 # ================= VIDEO MODE =================
 else:
-    st.warning("Press **Stop** in terminal to end monitoring")
+    st.warning("Press **Stop** to end monitoring")
 
     status_box = st.empty()
     frame_box = st.empty()
@@ -186,13 +186,13 @@ else:
                 status_box.warning("⚠ Fire Suspected")
             else:
                 fire_count = 0
-                status_box.success("✅ Area Safe")
+                status_box.success(" Area Safe !")
 
             if fire_count >= CONSEC_FRAMES and not alert_sent:
                 snapshot = BASE_DIR / "fire_snapshot.jpg"
                 cv2.imwrite(str(snapshot), frame)
                 send_email_alert(snapshot, conf)
-                status_box.error("🔥 ALERT SENT — FIRE CONFIRMED")
+                status_box.error(" ALERT SENT — FIRE CONFIRMED")
                 alert_sent = True
 
             cv2.putText(
@@ -213,9 +213,9 @@ else:
 st.markdown("---")
 st.markdown(
     """
-    ### 🔎 Status Legend
-    - ✅ **Green** — No Fire Detected  
-    - ⚠ **Yellow** — Possible Fire (Monitoring)  
-    - 🔥 **Red** — Fire Confirmed & Alert Sent  
+    ### Status Legend
+    -  **Green** — No Fire Detected  
+    - **Yellow** — Possible Fire (Monitoring)  
+    - **Red** — Fire Confirmed & Alert Sent  
     """
 )
